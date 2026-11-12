@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://husafoundation.org/sitemap.xml
