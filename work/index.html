@@ -883,6 +883,34 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
 .paper-band p{color:#ddd;max-width:58ch}
 .paper-band .pb-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 @media(max-width:860px){.paper-band .wrap{grid-template-columns:1fr}.paper-band .pb-actions .btn{flex:1 1 100%}}
+.ask-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ask-grid .card.ask{border-top:4px solid var(--red);display:grid;align-content:start;gap:8px}
+.ask-grid .card.ask h3{font-size:1.08rem;margin:0}
+.ask-grid .card.ask p{font-size:var(--fs-body-sm);margin:0}
+.ask-grid .card.ask .btn{justify-self:start;margin-top:6px}
+.ask-grid .card.funded{grid-column:span 3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0;padding:0;overflow:hidden;border-top:4px solid #1f7a3d}
+.fd-show{position:relative;min-height:300px;height:100%;background:#111}
+.fd-show img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
+.fd-show img.on{opacity:1}
+.fd-text{padding:clamp(18px,3vw,32px);display:grid;align-content:center;gap:10px}
+.fd-tag{justify-self:start;background:#e7f4ea;color:#1f7a3d;font-family:var(--ui);font-weight:800;font-size:.8rem;padding:5px 12px;border-radius:999px}
+.fd-text h3{margin:0}.fd-text p{margin:0}
+.fd-list{margin:0;padding-left:18px;display:grid;gap:6px;font-size:var(--fs-body-sm)}.fd-list li{margin:0}
+.fd-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+@media(max-width:1000px){.ask-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ask-grid .card.funded{grid-column:span 2}}
+@media(max-width:700px){.ask-grid{grid-template-columns:1fr}.ask-grid .card.funded{grid-column:auto;grid-template-columns:1fr}.fd-show{height:auto;min-height:0;aspect-ratio:4/3}.fd-acts .btn{flex:1 1 100%}}
+@media(min-width:1301px){.nav-group.nav-shut .sub{opacity:0!important;visibility:hidden!important}}
+.crumbs{background:#f6f4f2;border-bottom:1px solid var(--line);font-family:var(--ui);font-size:.88rem}
+.crumbs .cr-in{display:flex;align-items:center;gap:14px;min-height:46px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.cr-back{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer;min-height:36px}
+.cr-back:hover,.cr-back:focus-visible{border-color:var(--red);color:var(--red)}
+.cr-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px;color:var(--muted)}
+.cr-list li{display:inline-flex;align-items:center;gap:4px}
+.cr-list li+li::before{content:"\203A";color:var(--muted);margin:0 4px}
+.cr-list a{color:var(--ink);text-decoration:none;font-weight:600}
+.cr-list a:hover{color:var(--red);text-decoration:underline}
+.cr-list [aria-current]{color:var(--red);font-weight:700}
+@media(max-width:700px){.crumbs{font-size:.8rem}.crumbs .cr-in{flex-wrap:nowrap;gap:10px;min-height:42px}.cr-back{padding:4px 10px;min-height:32px;flex:none}.cr-list{flex-wrap:nowrap;white-space:nowrap;overflow:hidden;min-width:0}.cr-list li:last-child{overflow:hidden;text-overflow:ellipsis;min-width:0}.cr-list li:last-child span{overflow:hidden;text-overflow:ellipsis}}
 .give-bar{display:block;background:var(--red);color:#fff;text-decoration:none;font-family:var(--ui);font-size:.9rem;line-height:1.2}
 .give-bar .gb-in{display:flex;align-items:center;justify-content:center;gap:10px;padding-top:7px;padding-bottom:7px}
 .give-bar b{font-weight:800}
@@ -896,6 +924,7 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
 @media(max-width:640px){.gb-long{display:none}.gb-short{display:inline}.give-bar{font-size:.82rem}.give-bar .gb-in{gap:8px;padding-top:6px;padding-bottom:6px}.gb-btn{padding:3px 12px}}
 @media(max-width:430px){.give-bar{font-size:.74rem}.give-bar .gb-in{gap:6px}.gb-btn{padding:3px 10px}}
 @media(prefers-reduced-motion:reduce){.gb-dot{animation:none}}
+.mail-wrap{position:relative}.mail-pick{font-family:var(--ui);position:absolute;left:0;top:calc(100% + 8px);z-index:30;background:#fff;border:1px solid #ddd;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:8px;min-width:240px}.mail-pick[hidden]{display:none}.mail-pick .mp-h{margin:4px 10px 6px;font-size:13px;color:#555}.mail-pick a,.mail-pick button{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:10px;font-family:var(--ui);font-size:1rem;font-weight:600;color:#111;background:none;border:0;cursor:pointer;text-decoration:none}.mail-pick a:hover,.mail-pick button:hover{background:#f6e7e5;color:#b22418}
 </style>
 </head>
 <body>
@@ -944,6 +973,7 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
     </nav>
   </div>
 </header>
+<nav class="crumbs" id="crumbs" aria-label="You are here" hidden><div class="wrap cr-in"><button type="button" class="cr-back" id="crBack"><span aria-hidden="true">&larr;</span> Back</button><ol class="cr-list" id="crList"></ol></div></nav>
 
 <main id="main">
 
@@ -2395,8 +2425,24 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
     <p class="lede">We connect what you offer to a stage of the learner journey and one of our 6 strategic objectives, so you can see exactly what your support moves.</p>
   </div></section>
 
-  <section class="block">
+  <section class="block asks">
     <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Fund a part of the system</p><h2>We have the design. Help us bring it to life and prove it.</h2><p class="lede">Each part below makes HuSA work as one system for our priority children and the whole community. When a partner funds a part, it carries their name and the story of what they made possible.</p></div>
+      <div class="ask-grid reveal">
+        <div class="card funded" data-rm="off">
+          <div class="fd-show" aria-label="Photos of the Water, Health and Dignity project">
+            <img src="img/water-1-delivery.jpg" alt="The water tank arriving at HuSA Model School" class="on" loading="lazy" width="960" height="720">
+          </div>
+          <div class="fd-text"><span class="fd-tag">In progress with A Ripple International</span><h3>Water, Health and Dignity</h3><p>A Ripple International is raising funds with us for four needs that keep children in class. The campaign is open, and every gift goes to all four:</p><ul class="fd-list"><li><b>Safe water:</b> clean water at school, so children can drink, wash their hands and stay in class.</li><li><b>Health:</b> mosquito nets, because a child sick with malaria misses school, and missed learning leads back to the problem we are working to end.</li><li><b>Equality and dignity:</b> school uniforms and shoes, so no child stands out or walks barefoot because a parent cannot afford them.</li><li><b>Safety:</b> doors and windows for the classrooms.</li></ul><p>Thank you for standing with us.</p><div class="fd-acts"><a class="btn btn-red" href="https://donorbox.org/husa-refugee-school-giving-water-health-and-dignity" target="_blank" rel="noopener">Give to the campaign <span class="arr">&rarr;</span></a><a class="btn btn-line" href="https://a-ripple.org" target="_blank" rel="noopener">Visit A Ripple International</a></div></div>
+        </div>
+        <div class="card ask" data-rm="off"><span class="eyebrow">Institutional grant</span><h3>Classrooms and school buildings</h3><p>Room for every class to learn, and a school built well enough to draw full-fee families whose fees help fund places for priority children.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Institutional grant</span><h3>A fence around the school</h3><p>A safe, protected school compound for every learner.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Institutional grant</span><h3>The SAVER Point</h3><p>Where parents save, borrow and pay school fees, close to the school.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Institutional grant</span><h3>One year of staff salaries</h3><p>The teachers and staff already working with us, carried for one year while the design is proved.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Entrepreneurial leadership</span><h3>Leaders who become business owners</h3><p>Training for our staff, or funding for the capacity building our Executive Director leads, so HuSA leaders own enterprises whose returns fund the school.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Livelihoods</span><h3>School garden and garden supplies</h3><p>Seeds, tools and inputs for the garden whose harvest pays school fees step by step.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Livelihoods</span><h3>Food bank and agro-processing</h3><p>Storing and adding value to what households grow, so income lasts beyond the harvest.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Skill pathway, from Primary Four</span><h3>A skills workshop for every child</h3><p>Tools and set-up for hairdressing, tailoring, carpentry, motorcycle mechanics, electrical wiring, phone and radio repair, soap making, building and welding.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div><div class="card ask" data-rm="off"><span class="eyebrow">Sport for Protection Academy</span><h3>A playground, balls and play equipment</h3><p>Sport and play that keep children safe, connected and in school.</p><a class="btn btn-line" href="#contact">Fund this <span class="arr">&rarr;</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block mist">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Other ways to work with us</p></div>
       <div class="grid g3 reveal">
         <div class="card lift"><span class="eyebrow">Funders and foundations</span><h3>Test and prove the model</h3><p>Fund a stage of the journey: early childhood, foundational reading, the skill pathway, the household pathway, or the measurement that proves it works. We report with status labels and termly reading checks.</p></div>
         <div class="card lift"><span class="eyebrow">Community-led and refugee-led schools</span><h3>Adopt the HCTL model</h3><p>Start with teacher professional development in the Whole Educator, Whole Child model, and a free baseline reading assessment. A written agreement follows once your school has worked with the model.</p><a class="btn btn-line" href="#model" style="justify-self:start;margin-top:6px">The HCTL model <span class="arr">&rarr;</span></a></div>
@@ -2408,7 +2454,7 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
     </div>
   </section>
 
-  <section class="block mist">
+  <section class="block">
     <div class="wrap split">
       <div class="prose reveal">
         <p class="eyebrow">What the full design costs</p>
@@ -2468,8 +2514,13 @@ section.block.mist + section.block.mist{padding-top:clamp(12px,2vw,28px)}
         <div class="cline"><span class="k">Address</span><div class="row"><span class="v" id="c-addr" style="font-size:var(--fs-h4)">Block 18, Karuhinda Village, Zone E, Kyangwali Refugee Settlement, Kikuube District, Uganda</span><button class="copy" data-copy="c-addr" type="button">Copy</button></div></div>
         <div class="cline"><span class="k">Website</span><span class="v">husafoundation.org</span></div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
-          <a class="btn btn-red" href="mailto:husafoundation4st@gmail.com?subject=Partnership%20with%20HuSA">Write an email <span class="arr">&rarr;</span></a>
-          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Kyangwali+Refugee+Settlement+Kikuube+Uganda" target="_blank" rel="noopener">Open in Google Maps</a>
+          <div class="mail-wrap"><button type="button" class="btn btn-red" id="mailBtn" aria-expanded="false" aria-controls="mailPick">Write an email <span class="arr">&rarr;</span></button>
+<div class="mail-pick" id="mailPick" hidden><p class="mp-h">Choose how to write to us</p>
+<a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=husafoundation4st%40gmail.com&amp;su=Partnership%20with%20HuSA" target="_blank" rel="noopener">Gmail</a>
+<a href="https://outlook.live.com/mail/0/deeplink/compose?to=husafoundation4st%40gmail.com&amp;subject=Partnership%20with%20HuSA" target="_blank" rel="noopener">Outlook</a>
+<a href="mailto:husafoundation4st@gmail.com?subject=Partnership%20with%20HuSA">My phone's email app</a>
+<button type="button" id="mailCopy">Copy our email address</button></div></div>
+          <a class="btn btn-line" href="https://maps.app.goo.gl/22YvyXo1CDkTESa46" target="_blank" rel="noopener">Open in Google Maps</a>
         </div>
       </div>
       <div class="reveal">
@@ -2853,6 +2904,47 @@ document.querySelectorAll('.mz-filters').forEach(function(g){
   onRoute(function(){setTimeout(apply,60)});
 })();
 </script>
+<script>
+(function(){document.querySelectorAll('.fd-show').forEach(function(sh){var im=sh.querySelectorAll('img');if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var i=0;setInterval(function(){im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on');},4000);});})();
+</script>
+<script>
+(function(){
+  var crumbs=document.getElementById('crumbs'),list=document.getElementById('crList'),back=document.getElementById('crBack');
+  if(!crumbs||!window.husaPage)return;
+  var L={about:'Our story',team:'Governance and team',gallery:'Gallery',design:'School-based design',model:'The HCTL model','white-paper':'White paper',work:'What we do',school:'HuSA Model School',schoolteam:'School governance and management',strategy:'Our strategy',accountability:'Accountability',involved:'Partner with us',contact:'Contact',privacy:'Privacy notice'};
+  var P={about:'About us',team:'About us',gallery:'About us',design:'Our design',model:'Our design','white-paper':'Our design',school:'The school',schoolteam:'The school'};
+  var moved=0,popping=false;
+  window.addEventListener('popstate',function(){popping=true;});
+  var _go=window.husaGo;window.husaGo=function(id){_go(id);};
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function draw(){
+    var id=husaPage();
+    if(id==='home'||!L[id]){crumbs.hidden=true;return;}
+    crumbs.hidden=false;
+    var h='<li><a href="'+husaHref('home')+'" data-route="home">Home</a></li>';
+    if(P[id])h+='<li>'+esc(P[id])+'</li>';
+    h+='<li><span aria-current="page">'+esc(L[id])+'</span></li>';
+    list.innerHTML=h;
+    if(!window.husaPaths){list.querySelector('a').setAttribute('href','#home');}
+  }
+  back.addEventListener('click',function(){if(moved>0){history.back();}else{husaGo('home');}});
+  list.addEventListener('click',function(e){var a=e.target.closest('a[data-route]');if(!a)return;e.preventDefault();husaGo('home');});
+  onRoute(function(){if(popping){moved=Math.max(0,moved-1);popping=false;}else{moved++;}draw();
+    if(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('.nav'))document.activeElement.blur();
+    document.querySelectorAll('.nav-group').forEach(function(g){g.classList.add('nav-shut');});
+  });
+  document.querySelectorAll('.nav-group').forEach(function(g){g.addEventListener('mouseleave',function(){g.classList.remove('nav-shut');});g.querySelector('.nav-drop').addEventListener('click',function(){g.classList.remove('nav-shut');});});
+  draw();
+})();
+</script><script>(function(){var b=document.getElementById('mailBtn'),p=document.getElementById('mailPick'),c=document.getElementById('mailCopy');if(!b)return;
+function set(o){p.hidden=!o;b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();set(p.hidden);});
+p.addEventListener('click',function(e){if(e.target.closest('a'))setTimeout(function(){set(false)},100);});
+document.addEventListener('click',function(e){if(!p.hidden&&!e.target.closest('.mail-wrap'))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+c.addEventListener('click',function(){var t='husafoundation4st@gmail.com';function ok(){c.textContent='Copied: '+t;setTimeout(function(){c.textContent='Copy our email address'},2200);}
+try{navigator.clipboard.writeText(t).then(ok,function(){c.textContent=t;});}catch(x){c.textContent=t;}});})();</script>
+
 
 </body>
 </html>
